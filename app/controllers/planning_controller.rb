@@ -116,7 +116,7 @@ class PlanningController < ApplicationController
     # TODO: Respond only with projects involved in the issues returned and
     # their ancestors
     @project_ids = {}
-    projects = Project.find(:all)
+    projects = Project.all
     projects.each do |prj|
         @project_ids[prj.id] = {:identifier => prj.identifier, :name => prj.name}
         @response[:projects].push({
@@ -128,7 +128,7 @@ class PlanningController < ApplicationController
 
     # Retrieve all trackers
     # TODO: Respond only with trackers relevant for this project
-    trackers = Tracker.find(:all)
+    trackers = Tracker.all
     @tracker_ids = {}
     trackers.each do |tracker|
         @tracker_ids[tracker.id] = tracker[:name]
@@ -140,7 +140,7 @@ class PlanningController < ApplicationController
 
     # Retrieve all versions
     # TODO: Respond only with versions relevant for this project
-    versions = Version.find(:all)
+    versions = Version.all
     @version_ids = {}
     versions.each do |version|
         @version_ids[version.id] = version[:name]
